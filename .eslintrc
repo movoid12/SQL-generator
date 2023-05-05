@@ -1,0 +1,71 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import", "react", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "prettier/prettier": ["warn"],
+    // Avoid unnecessary multiple empty lines
+    "no-multiple-empty-lines": ["warn", { "max": 2 }],
+    // Disable since we don't use prop-types
+    "react/prop-types": "off",
+    // Avoids unnecessary errors when not importing React in a module if not needed
+    "react/react-in-jsx-scope": "off",
+    // Avoid consoles in frontend
+    "no-console": "warn",
+    // Avoid debugger in frontend
+    "no-debugger": "warn",
+    // Prevent unused variables
+    "@typescript-eslint/no-unused-vars": "warn",
+    // Typescript already checks imports for us
+    "import/no-unresolved": "off",
+    // Enforces consistent usage of arrow functions for react components
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function"
+      }
+    ],
+    // Enforce usage of === equal signs
+    "eqeqeq": ["error", "always"],
+    // Import order rules
+    "import/newline-after-import": [
+      "warn",
+      {
+        "count": 1
+      }
+    ],
+    "import/no-default-export": "warn",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "always",
+        "groups": [["builtin", "external"], ["internal", "parent", "sibling"], "index", "object"],
+        "pathGroups": [
+          {
+            "pattern": "{.,..}/**/*.css",
+            "group": "index",
+            "position": "after"
+          },
+          {
+            "pattern": "~/**/*",
+            "group": "internal",
+            "position": "before"
+          }
+        ]
+      }
+    ]
+  }
+}

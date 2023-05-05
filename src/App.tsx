@@ -1,6 +1,8 @@
-import { Button, Container, Group, Input, Stack } from "@mantine/core";
+import { Button, Group, Input, Stack } from "@mantine/core";
+
 import CodeDisplay from "./components/CodeDisplay/CodeDisplay";
 import MessagesCollectionDisplay from "./components/MessagesCollectionDisplay/MessagesCollectionDisplay";
+import getQuery from "./utils/getPrompts";
 
 const App = () => {
   return (
@@ -8,7 +10,9 @@ const App = () => {
       <MessagesCollectionDisplay />
       <Input size="lg" placeholder="write what you think to generate sql for you :)" radius="xl" />
       <Group position="center">
-        <Button color="teal">Get Query</Button>
+        <Button onClick={getQuery} color="teal">
+          Get Query
+        </Button>
         <Button color="yellow">Clear Chat</Button>
       </Group>
       <CodeDisplay />
